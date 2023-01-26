@@ -1,0 +1,8 @@
+.app{
+    display: flex;
+    flex-direction: column;
+    gap: 20rem;
+}
+*{
+    font-family: monospace;
+}
