@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import Listmovie from './Components/Listmovie/Listmovie'
-import Searchbar from './Components/Searchbar/Searchbar'
+import { Routes,Route } from 'react-router-dom'
+import Description from './Components/Description/Description'
+import Home from './Home'
+
 
 function App() {
   const [movies, setMovies] = useState([
@@ -9,13 +11,11 @@ function App() {
     { title: 'Noce dété', description: 'Hamid est journaliste, la trentaine passée et il vit son célibat avec sa famille petite bourgeoise comme un échappatoire pour ne pas ressembler aux siens. Sa famille veut le marier à tout prix avec sa voisine Rym (30 ans) pour mettre fin à ses hésitations, et aux mauvaises langues qui népargnent pas les célibataires endurcis. Nosant sopposer à la décision de mariage de sa famille, Hamid préfère fuir latmosphère des préparatifs…', posterURL: 'https://pictures.artify.tn/media/zhkfzolegpiij9rzf3ui.jpg?width=200', rating: 5, id: 3 },
     { title: 'A Peine Jouvre Les Yeux', description: 'Tunis, été 2010, quelques mois avant la Révolution, Farah 18 ans passe son bac et sa famille limagine déjà médecin… mais elle ne voit pas les choses de la même manière. Elle chante au sein d¹un groupe de rock engagé. Elle vibre, senivre, découvre lamour et sa ville de nuit contre la volonté dHayet, sa mère, qui connaît la Tunisie et ses interdits.', posterURL: 'https://pictures.artify.tn/media/r07wsehw43shedjuick2.jpg?width=200', rating: 2, id: 4 },
   ])
-  const [searchTerm,setSearchTerm] = useState('');
-  const [rating,setRating] = useState(null);
-  return (
-    <div>
-      <Searchbar movies={movies} setMovies={setMovies} searchTerm={searchTerm} setSearchTerm={setSearchTerm} rating={rating} setRating={setRating}/>
-      <Listmovie movies={movies} setMovies={setMovies} searchTerm={searchTerm} setSearchTerm={setSearchTerm} rating={rating} setRating={setRating}/>
-    </div>
+  return(
+    <Routes>
+      <Route path="/" element={<Home movies={movies} setMovies={setMovies} />} />
+      <Route path="/:id" element={<Description movies={movies}/>} />
+    </Routes>
   )
 }
 

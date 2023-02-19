@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
+import { useNavigate } from 'react-router-dom';
 const labels = {
     1: '5ayeb',
     2: '5ayeb',
@@ -15,9 +16,14 @@ const labels = {
     5: 'mich 3adi',
 };
 export default function MovieCard({ el ,movies,setMovies }) {
+    const navigate = useNavigate()
     const handleDelete = (el) => setMovies(movies.filter((e) => e.id!=el.id))
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345 }} onClick={
+            ()=>{
+                navigate("/"+el.id)
+            }
+        }>
             <CardMedia
                 component="img"
                 height="350"
